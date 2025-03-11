@@ -1,4 +1,4 @@
-# helm-charts
+# Zapata Technology helm-charts
 
 ## Usage
 
