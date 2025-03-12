@@ -40,6 +40,12 @@ spec:
         - name: nifi-config
           configMap:
             name: {{ include "nifi.fullname" . }}-config
-        - name: nifi-data
-          persistentVolumeClaim:
-            claimName: nifi-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: nifi-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "{{ .Values.persistence.storageClass }}"  # Matches your values.yaml
+        resources:
+          requests:
+            storage: "{{ .Values.persistence.size }}"
