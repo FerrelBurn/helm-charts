@@ -7,6 +7,7 @@ data:
     nifi.web.http.port={{ .Values.nifi.properties.nifi_web_http_port }}
     nifi.web.https.port={{ .Values.nifi.properties.nifi_web_https_port }}
     nifi.security.user.login.identity.provider={{- if .Values.auth.ldap.enabled }}ldap-provider{{- else if .Values.auth.kerberos.enabled }}kerberos-provider{{- else if .Values.auth.singleUser.enabled }}single-user-provider{{- else }}{{ fail "No identity provider enabled in auth config!" }}{{- end }}
+    nifi.python.command=/usr/bin/python3  # Added for Python integration
 
   login-identity-providers.xml: |-
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
