@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "nifi.fullname" . }}
+spec:
+  serviceName: {{ include "nifi.fullname" . }}
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "nifi.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "nifi.name" . }}
+    spec:
+      containers:
+        - name: nifi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+            - name: https
+              containerPort: {{ .Values.service.httpsPort }}
+          volumeMounts:
+            - name: nifi-data
+              mountPath: /opt/nifi/nifi-current/data
+          env:
+            - name: NIFI_WEB_HTTP_PORT
+              value: "{{ .Values.nifi.properties.nifi_web_http_port }}"
+            - name: NIFI_WEB_HTTPS_PORT
+              value: "{{ .Values.nifi.properties.nifi_web_https_port }}"
+      volumes:
+        - name: nifi-data
+          persistentVolumeClaim:
+            claimName: nifi-pvc

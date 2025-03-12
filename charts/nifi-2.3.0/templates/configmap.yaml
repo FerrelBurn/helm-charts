@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nifi.fullname" . }}-config
+data:
+  nifi.properties: |
+    nifi.web.http.port={{ .Values.nifi.properties.nifi_web_http_port }}
+    nifi.web.https.port={{ .Values.nifi.properties.nifi_web_https_port }}
