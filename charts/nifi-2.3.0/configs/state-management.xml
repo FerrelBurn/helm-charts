@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<stateManagement>
+
+    <!-- Local State Provider -->
+    <local-provider>
+        <id>local-provider</id>
+        <class>org.apache.nifi.controller.state.providers.local.WriteAheadLocalStateProvider</class>
+        <property name="Directory">./state/local</property>
+        <property name="Always Sync">false</property>
+        <property name="Partitions">16</property>
+        <property name="Checkpoint Interval">2 mins</property>
+    </local-provider>
+
+    {{- if .Values.stateProviders.zookeeper.enabled }}
+    <!-- ZooKeeper Cluster State Provider -->
+    <cluster-provider>
+        <id>zk-provider</id>
+        <class>org.apache.nifi.controller.state.providers.zookeeper.ZooKeeperStateProvider</class>
+        <property name="Connect String">{{ .Values.stateProviders.zookeeper.connectString }}</property>
+        <property name="Root Node">{{ .Values.stateProviders.zookeeper.rootNode | default "/nifi" }}</property>
+        <property name="Session Timeout">{{ .Values.stateProviders.zookeeper.sessionTimeout | default "30 seconds" }}</property>
+        <property name="Access Control">{{ .Values.stateProviders.zookeeper.accessControl | default "Open" }}</property>
+    </cluster-provider>
+    {{- end }}
+
+    {{- if .Values.stateProviders.kubernetes.enabled }}
+    <!-- Kubernetes ConfigMap State Provider -->
+    <cluster-provider>
+        <id>kubernetes-provider</id>
+        <class>org.apache.nifi.kubernetes.state.provider.KubernetesConfigMapStateProvider</class>
+        <property name="ConfigMap Name Prefix">{{ .Values.stateProviders.kubernetes.configMapPrefix | default "nifi" }}</property>
+    </cluster-provider>
+    {{- end }}
+
+    {{- if .Values.stateProviders.redis.enabled }}
+    <!-- Redis Cluster State Provider -->
+    <cluster-provider>
+        <id>redis-provider</id>
+        <class>org.apache.nifi.redis.state.RedisStateProvider</class>
+        <property name="Redis Mode">{{ .Values.stateProviders.redis.mode | default "Standalone" }}</property>
+        <property name="Connection String">{{ .Values.stateProviders.redis.connectionString }}</property>
+        {{- if .Values.stateProviders.redis.keyPrefix }}
+        <property name="Key Prefix">{{ .Values.stateProviders.redis.keyPrefix }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.databaseIndex }}
+        <property name="Database Index">{{ .Values.stateProviders.redis.databaseIndex }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.communicationTimeout }}
+        <property name="Communication Timeout">{{ .Values.stateProviders.redis.communicationTimeout }}</property>
+        {{- end }}
+        {{- if eq .Values.stateProviders.redis.mode "Sentinel" }}
+        <property name="Sentinel Master">{{ .Values.stateProviders.redis.sentinelMaster }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.password }}
+        <property name="Password">{{ .Values.stateProviders.redis.password }}</property>
+        {{- end }}
+        <property name="Enable TLS">{{ .Values.stateProviders.redis.enableTls | default "false" }}</property>
+        <property name="Max Attempts">{{ .Values.stateProviders.redis.maxAttempts | default "20" }}</property>
+        <!-- Connection Pool Settings -->
+        {{- if .Values.stateProviders.redis.poolMaxTotal }}
+        <property name="Pool - Max Total">{{ .Values.stateProviders.redis.poolMaxTotal }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.poolMaxIdle }}
+        <property name="Pool - Max Idle">{{ .Values.stateProviders.redis.poolMaxIdle }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.poolMinIdle }}
+        <property name="Pool - Min Idle">{{ .Values.stateProviders.redis.poolMinIdle }}</property>
+        {{- end }}
+        <property name="Pool - Block When Exhausted">{{ .Values.stateProviders.redis.poolBlockWhenExhausted | default "true" }}</property>
+        {{- if .Values.stateProviders.redis.poolMaxWaitTime }}
+        <property name="Pool - Max Wait Time">{{ .Values.stateProviders.redis.poolMaxWaitTime }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.poolMinEvictableIdleTime }}
+        <property name="Pool - Min Evictable Idle Time">{{ .Values.stateProviders.redis.poolMinEvictableIdleTime }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.poolTimeBetweenEvictionRuns }}
+        <property name="Pool - Time Between Eviction Runs">{{ .Values.stateProviders.redis.poolTimeBetweenEvictionRuns }}</property>
+        {{- end }}
+        {{- if .Values.stateProviders.redis.poolNumTestsPerEvictionRun }}
+        <property name="Pool - Num Tests Per Eviction Run">{{ .Values.stateProviders.redis.poolNumTestsPerEvictionRun }}</property>
+        {{- end }}
+        <property name="Pool - Test On Create">{{ .Values.stateProviders.redis.poolTestOnCreate | default "false" }}</property>
+        <property name="Pool - Test On Borrow">{{ .Values.stateProviders.redis.poolTestOnBorrow | default "false" }}</property>
+        <property name="Pool - Test On Return">{{ .Values.stateProviders.redis.poolTestOnReturn | default "false" }}</property>
+        <property name="Pool - Test While Idle">{{ .Values.stateProviders.redis.poolTestWhileIdle | default "true" }}</property>
+    </cluster-provider>
+    {{- end }}
+
+</stateManagement>
