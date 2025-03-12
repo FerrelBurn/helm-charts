@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nifi.fullname" . }}
+  labels:
+    app: {{ include "nifi.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "nifi.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "nifi.name" . }}
+    spec:
+      containers:
+        - name: nifi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+            - containerPort: {{ .Values.service.httpsPort }}
+          volumeMounts:
+            - name: nifi-config
+              mountPath: /opt/nifi/nifi-current/conf/nifi.properties
+              subPath: nifi.properties
+            - name: nifi-config
+              mountPath: /opt/nifi/nifi-current/conf/login-identity-providers.xml
+              subPath: login-identity-providers.xml
+          resources:
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+      volumes:
+        - name: nifi-config
+          configMap:
+            name: {{ include "nifi.fullname" . }}-config

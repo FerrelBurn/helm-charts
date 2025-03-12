@@ -1,4 +1,3 @@
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -12,6 +11,7 @@ data:
   login-identity-providers.xml: |-
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <loginIdentityProviders>
+
         {{- if .Values.auth.singleUser.enabled }}
         <provider>
             <identifier>single-user-provider</identifier>
@@ -20,6 +20,7 @@ data:
             <property name="Password">{{ .Values.auth.singleUser.password }}</property>
         </provider>
         {{- end }}
+
         {{- if .Values.auth.ldap.enabled }}
         <provider>
             <identifier>ldap-provider</identifier>
@@ -46,6 +47,7 @@ data:
             <property name="Authentication Expiration">{{ .Values.auth.ldap.authExpiration }}</property>
         </provider>
         {{- end }}
+
         {{- if .Values.auth.kerberos.enabled }}
         <provider>
             <identifier>kerberos-provider</identifier>
@@ -54,4 +56,5 @@ data:
             <property name="Authentication Expiration">{{ .Values.auth.kerberos.authExpiration }}</property>
         </provider>
         {{- end }}
+
     </loginIdentityProviders>
