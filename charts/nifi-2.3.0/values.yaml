@@ -27,8 +27,8 @@ nifi:
   cluster:
     enabled: false
   properties:
-    nifi_web_http_port: 8080      # Internal NiFi HTTP port (inside pod)
-    nifi_web_https_port: 8443     # Internal NiFi HTTPS port (inside pod)
+    nifi_web_http_port: 8181      # Internal NiFi HTTP port (inside pod)
+    nifi_web_https_port: 8441     # Internal NiFi HTTPS port (inside pod)
 
 ingress:
   enabled: false
