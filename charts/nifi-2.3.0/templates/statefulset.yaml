@@ -23,6 +23,12 @@ spec:
             - name: https
               containerPort: {{ .Values.service.httpsPort }}
           volumeMounts:
+            - name: nifi-config
+              mountPath: /opt/nifi/nifi-current/conf/nifi.properties
+              subPath: nifi.properties
+            - name: nifi-config
+              mountPath: /opt/nifi/nifi-current/conf/login-identity-providers.xml
+              subPath: login-identity-providers.xml
             - name: nifi-data
               mountPath: /opt/nifi/nifi-current/data
           env:
@@ -31,6 +37,9 @@ spec:
             - name: NIFI_WEB_HTTPS_PORT
               value: "{{ .Values.nifi.properties.nifi_web_https_port }}"
       volumes:
+        - name: nifi-config
+          configMap:
+            name: {{ include "nifi.fullname" . }}-config
         - name: nifi-data
           persistentVolumeClaim:
             claimName: nifi-pvc

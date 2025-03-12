@@ -7,8 +7,8 @@ image:
 
 service:
   type: ClusterIP
-  port: 8181
-  httpsPort: 8441
+  port: 8181         # External HTTP port exposed via service
+  httpsPort: 8441    # External HTTPS port exposed via service
 
 resources:
   limits:
@@ -27,8 +27,8 @@ nifi:
   cluster:
     enabled: false
   properties:
-    nifi_web_http_port: 8080
-    nifi_web_https_port: 8443
+    nifi_web_http_port: 8080      # Internal NiFi HTTP port (inside pod)
+    nifi_web_https_port: 8443     # Internal NiFi HTTPS port (inside pod)
 
 ingress:
   enabled: false
@@ -37,3 +37,36 @@ ingress:
     - host: nifi.local
       paths: ["/"]
   tls: []
+
+# Authentication Section
+auth:
+  # Single User Login (for bootstrap/admin access)
+  singleUser:
+    enabled: true
+    username: "admin"
+    password: "$2b$12$k41SXQyJA3Cfe6w6wU5F3e8pYZlN3GZvwbdMkPlDguOjFZ4YOGIFG"  # bcrypt hash for 'admin1234567'
+
+  # LDAP Settings (disabled by default, enable as needed)
+  ldap:
+    enabled: false
+    authStrategy: "START_TLS"
+    admin: "CN=admin,DC=example,DC=com"
+    pass: "ldap-admin-password"
+    keystore: "/opt/nifi/nifi-current/conf/keystore.jks"
+    keystorePasswd: "changeit"
+    keystoreType: "JKS"
+    truststore: "/opt/nifi/nifi-current/conf/truststore.jks"
+    truststorePasswd: "changeit"
+    truststoreType: "JKS"
+    clientAuth: "NONE"
+    host: "ldap://ldap.example.com:389"
+    searchBase: "CN=Users,DC=example,DC=com"
+    userIdentityAttribute: "sAMAccountName"
+    identityStrategy: "USE_DN"
+    authExpiration: "12 hours"
+
+  # Kerberos Settings (disabled by default, enable as needed)
+  kerberos:
+    enabled: false
+    realm: "EXAMPLE.COM"
+    authExpiration: "12 hours"
