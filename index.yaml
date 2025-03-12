@@ -3,6 +3,16 @@ entries:
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0
+    created: "2025-03-12T23:51:32.840455447Z"
+    description: A Helm chart for Apache NiFi 2.3.0
+    digest: 1380cc2d985e190d05a237ab705affe7ac6e3e999887cf3413fb5464a14a4ee1
+    name: nifi
+    type: application
+    urls:
+    - nifi-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 2.3.0
     created: "2025-03-12T23:41:09.760845153Z"
     description: A Helm chart for Apache NiFi 2.3.0
     digest: 84f831d05b921fd45587ef3a87cc584a4cd237bfcec318021b9fc4638202cef0
@@ -51,4 +61,4 @@ entries:
     urls:
     - nifi-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-12T23:41:09.760872654Z"
+generated: "2025-03-12T23:51:32.840477237Z"
