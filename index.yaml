@@ -31,4 +31,15 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/helm-example-0.1.0/helm-example-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-11T19:19:53.302238637Z"
+  nifi:
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-03-12T21:29:30.713975788Z"
+    description: A Helm chart for Apache NiFi 2.3.0
+    digest: b75ede9c9ed789b07c745dffca2ac37b756715a16905e711cd59445277c3220a
+    name: nifi
+    type: application
+    urls:
+    - nifi-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-03-12T21:29:30.713984064Z"
