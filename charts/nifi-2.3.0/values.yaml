@@ -7,8 +7,8 @@ image:
 
 service:
   type: ClusterIP
-  port: 8080
-  httpsPort: 8443
+  port: 8181
+  httpsPort: 8441
 
 resources:
   limits:
