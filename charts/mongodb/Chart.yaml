@@ -1,6 +1,20 @@
 apiVersion: v2
 name: mongodb-ironbank
-description: A Helm chart for deploying Iron Bank MongoDB 8.x
+description: A Helm chart for deploying Iron Bank MongoDB
 type: application
-version: 0.1.1
+version: 0.1.3
 appVersion: "8.0.8"
+keywords:
+  - mongodb
+  - ironbank
+  - nifi
+  - data
+  - process
+home: https://www.mongodb.com/
+icon: https://www.svgrepo.com/show/331488/mongodb.svg
+source:
+  - https://helm.zapatatechnology.com/
+maintainers:
+  - name: Drew
+    email: drew@zapatatechnology.com
+    url: https://github.com/ferrelburn
