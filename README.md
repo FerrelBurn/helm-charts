@@ -13,6 +13,8 @@ If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages.  You can then run `helm search repo
 zapata` to see the charts.
 
+
+
 To install the nifi chart:
 
     helm install zapata-nifi zapata/nifi
@@ -20,3 +22,7 @@ To install the nifi chart:
 To uninstall the chart:
 
     helm uninstall zapata-nifi 
+
+To update:
+    helm repo update
+    helm upgrade nifi zapata/nifi --version <Example 0.6.7> -f values.yaml -n default
