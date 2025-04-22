@@ -3,6 +3,44 @@ entries:
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0-custom
+    created: "2025-04-22T20:34:56.888788023Z"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.7
+    - alias: registry
+      condition: registry.enabled
+      name: nifi-registry
+      repository: https://dysnix.github.io/charts/
+      version: 1.0.0
+    - condition: ca.enabled
+      name: ca
+      repository: ""
+      version: 1.0.1
+    - condition: openldap.enabled
+      name: openldap
+      repository: https://charts.helm.sh/stable
+      version: ~1.2.4
+    description: Apache NiFi is a software project from the Apache Software Foundation
+      designed to automate the flow of data between software systems.
+    digest: 7ba7837dc619e15c29f4b46a4a2c33c5ea207d46e83acc97731773dda04f8889
+    home: https://nifi.apache.org/
+    icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
+    keywords:
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: nifi
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-0.6.10/nifi-0.6.10.tgz
+    version: 0.6.10
+  - apiVersion: v2
+    appVersion: 2.3.0-custom
     created: "2025-04-22T20:27:53.882327394Z"
     dependencies:
     - condition: zookeeper.enabled
@@ -191,4 +229,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-0.6.5/nifi-0.6.5.tgz
     version: 0.6.5
-generated: "2025-04-22T20:27:53.882351929Z"
+generated: "2025-04-22T20:34:56.88883971Z"
