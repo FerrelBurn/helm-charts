@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mongodb-ironbank.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 27017
+      nodePort: {{ .Values.service.nodePort }}
+      protocol: TCP
+      name: mongodb
+  selector:
+    app: {{ include "mongodb-ironbank.name" . }}

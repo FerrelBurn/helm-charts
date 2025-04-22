@@ -1,0 +1,42 @@
+replicaCount: 1
+
+image:
+  repository: registry1.dso.mil/ironbank/opensource/mongodb/mongodb_8.x
+  tag: "8.0.8"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ironbank-creds
+
+auth:
+  enabled: true
+  rootUser: admin
+  rootPassword: admin12345
+
+service:
+  type: NodePort
+  port: 27017
+  nodePort: 32017
+
+resources: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClassName: ""
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  hosts:
+    - host: mongodb.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - mongodb.local
+      secretName: mongodb-tls

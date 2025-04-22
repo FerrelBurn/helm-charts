@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mongodb-ironbank
+description: A Helm chart for deploying Iron Bank MongoDB 8.x
+type: application
+version: 0.1.0
+appVersion: "8.0.8"
