@@ -11,17 +11,6 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-0.1.1/grafana-0.1.1.tgz
     version: 0.1.1
-  grafana-ironbank:
-  - apiVersion: v2
-    appVersion: 11.6.0
-    created: "2025-04-22T21:59:30.057459533Z"
-    description: A Helm chart for deploying Iron Bank Grafana
-    digest: da7924e700f3991ffc65693d0b90b800afcbd36668769e34b24b99727e553000
-    name: grafana-ironbank
-    type: application
-    urls:
-    - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-ironbank-0.1.0/grafana-ironbank-0.1.0.tgz
-    version: 0.1.0
   mongodb-ironbank:
   - apiVersion: v2
     appVersion: 8.0.8
