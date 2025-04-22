@@ -91,7 +91,7 @@ properties:
   # use externalSecure for when inbound SSL is provided by nginx-ingress or other external mechanism
   externalSecure: false
   isNode: false
-  httpsPort: 8443
+  httpsPort: 1775
   webProxyHost: # <clusterIP>:<NodePort> (If Nifi service is NodePort or LoadBalancer)
   clusterPort: 6007
   zkClientEnsembleTraker: false # https://issues.apache.org/jira/browse/NIFI-10481
@@ -191,7 +191,7 @@ headless:
 service:
   type: ClusterIP
   httpsPort: 1775
-  nodePort: 30236
+  # nodePort: 30236
   annotations: {}
     # loadBalancerIP:
     ## Load Balancer sources
