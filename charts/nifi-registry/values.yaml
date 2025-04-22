@@ -1,0 +1,20 @@
+replicaCount: 1
+
+image:
+  repository: registry1.dso.mil/ironbank/opensource/apache/nifi-registry
+  tag: "2.3.0"
+  pullPolicy: IfNotPresent
+
+pullSecret: ironbank-creds
+
+service:
+  type: ClusterIP
+  port: 18080
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

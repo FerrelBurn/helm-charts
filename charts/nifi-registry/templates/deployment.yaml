@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nifi-registry.fullname" . }}
+  labels:
+    app: {{ include "nifi-registry.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "nifi-registry.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "nifi-registry.name" . }}
+    spec:
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      containers:
+        - name: nifi-registry
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 18080
+          env:
+            - name: NIFI_REGISTRY_WEB_HTTP_PORT
+              value: "18080"
