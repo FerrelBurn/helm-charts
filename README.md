@@ -1,5 +1,16 @@
 # Zapata Technology helm-charts
 
+## Prerequisites 
+### Authenticate to DSO.MIL this is to prevent disclosure of authenticators
+
+    kubectl create secret docker-registry ironbank-creds \
+      --docker-server=registry1.dso.mil \
+      --docker-username=<your-ironbank-username> \
+      --docker-password=<your-token-or-password> \
+      --docker-email=<your-email>
+
+#### Note: Please understand that without access to Registry ONE you will be unable to use specific Zapata Technology Helm Charts
+
 ## Usage
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
@@ -24,5 +35,7 @@ To uninstall the chart:
     helm uninstall zapata-nifi 
 
 To update:
+    
     helm repo update
     helm upgrade nifi zapata/nifi --version <Example 0.6.7> -f values.yaml -n default
+
