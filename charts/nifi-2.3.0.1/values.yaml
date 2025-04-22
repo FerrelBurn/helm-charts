@@ -73,43 +73,34 @@ sts:
 
 
 properties:
-  # https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html#nifi_sensitive_props_key
-  sensitiveKey: changeMechangeMe # Must have at least 12 characters
-  # NiFi assumes conf/nifi.properties is persistent but this helm chart
-  # recreates it every time.  Setting the Sensitive Properties Key
-  # (nifi.sensitive.props.key) is supposed to happen at the same time
-  # /opt/nifi/data/flow.xml.gz sensitive properties are encrypted.  If that
-  # doesn't happen then NiFi won't start because decryption fails.
-  # So if sensitiveKeySetFile is configured but doesn't exist, assume
-  # /opt/nifi/flow.xml.gz hasn't been encrypted and follow the procedure
-  # https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html#updating-the-sensitive-properties-key
-  # to simultaneously encrypt it and set nifi.sensitive.props.key.
-  # sensitiveKeySetFile: /opt/nifi/data/sensitive-props-key-applied
-  # If sensitiveKey was already set, then pass in sensitiveKeyPrior with the old key.
-  # sensitiveKeyPrior: OldPasswordToChangeFrom
+  sensitiveKey: changeMechangeMe  # Must be at least 12 characters
   algorithm: NIFI_PBKDF2_AES_GCM_256
-  # use externalSecure for when inbound SSL is provided by nginx-ingress or other external mechanism
   externalSecure: false
   isNode: false
-  httpsPort: 1775
-  webProxyHost: # <clusterIP>:<NodePort> (If Nifi service is NodePort or LoadBalancer)
+
+  # HTTPS configuration (container-side)
+  httpsPort: 9443
+  webProxyHost: "192.168.67.2:31443"
+
+  # Cluster & ZK communication
   clusterPort: 6007
-  zkClientEnsembleTraker: false # https://issues.apache.org/jira/browse/NIFI-10481
+  zkClientEnsembleTraker: false
   clusterNodeConnectionTimeout: '5 sec'
   clusterNodeReadTimeout: '5 sec'
   zookeeperConnectTimeout: '3 secs'
   zookeeperSessionTimeout: '3 secs'
+
+  # Content repository & provenance
   archiveMaxRetentionPeriod: "3 days"
   archiveMaxUsagePercentage: "85%"
   provenanceStorage: "8 GB"
   provenanceMaxStorageTime: "10 days"
+
   siteToSite:
     port: 10000
-  # use properties.safetyValve to pass explicit 'key: value' pairs that overwrite other configuration
+
   safetyValve:
-    #nifi.variable.registry.properties: "${NIFI_HOME}/example1.properties, ${NIFI_HOME}/example2.properties"
     nifi.web.http.network.interface.default: eth0
-    # listen to loopback interface so "kubectl port-forward ..." works
     nifi.web.http.network.interface.lo: lo
 
   ## Include aditional processors
@@ -189,9 +180,11 @@ headless:
 
 # ui service
 service:
-  type: ClusterIP
-  httpsPort: 1775
-  # nodePort: 30236
+  type: NodePort
+  httpsPort: 9443        # internal HTTPS port inside the container
+  nodePort: 31443        # fixed external port on your Minikube IP
+
+
   annotations: {}
     # loadBalancerIP:
     ## Load Balancer sources
