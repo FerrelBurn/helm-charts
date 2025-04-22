@@ -3,6 +3,16 @@ entries:
   grafana:
   - apiVersion: v2
     appVersion: 11.6.0
+    created: "2025-04-22T22:09:29.961328296Z"
+    description: A Helm chart for deploying Iron Bank Grafana
+    digest: e914b9da4fa62f8e7e54aab8b9ee23062f537aeef9f7d4c775853b22d605b1a0
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-0.1.2/grafana-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 11.6.0
     created: "2025-04-22T22:03:37.689415708Z"
     description: A Helm chart for deploying Iron Bank Grafana
     digest: 575946269d65485fdda98299aa1a3f3f8520e99e5f59b5af9c9c50951f4cfb4c
@@ -320,4 +330,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-22T22:03:37.689438881Z"
+generated: "2025-04-22T22:09:29.96135172Z"
