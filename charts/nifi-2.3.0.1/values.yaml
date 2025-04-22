@@ -17,9 +17,8 @@ image:
   ## Secret must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  # pullSecret: myRegistrKeySecretName
-imagePullSecrets:
-  - name: ironbank-creds
+pullSecret: ironbank-creds
+
 
 securityContext:
   runAsUser: 1000
