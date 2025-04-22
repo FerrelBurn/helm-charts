@@ -14,21 +14,24 @@ spec:
       labels:
         app: {{ include "nifi-registry.name" . }}
     spec:
+      {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
       containers:
         - name: nifi-registry
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 18080
+              name: http
           env:
             - name: NIFI_REGISTRY_WEB_HTTP_PORT
               value: "18080"
-                    volumeMounts:
+          volumeMounts:
             - name: flow-storage
               mountPath: /opt/nifi-registry/nifi-registry-current/flow_storage
-          volumes:
-            - name: flow-storage
-              persistentVolumeClaim:
-                claimName: {{ include "nifi-registry.fullname" . }}
+      volumes:
+        - name: flow-storage
+          persistentVolumeClaim:
+            claimName: {{ include "nifi-registry.fullname" . }}
