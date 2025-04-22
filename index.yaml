@@ -24,6 +24,28 @@ entries:
   mongodb-ironbank:
   - apiVersion: v2
     appVersion: 8.0.8
+    created: "2025-04-22T22:40:46.360400674Z"
+    description: A Helm chart for deploying Iron Bank MongoDB
+    digest: c15da61494185c9988bb0c2a3d43ec66f8bb1a81505f2ccbb60bbc29ba5c9ed7
+    home: https://www.mongodb.com/
+    icon: https://www.svgrepo.com/show/331488/mongodb.svg
+    keywords:
+    - mongodb
+    - ironbank
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: mongodb-ironbank
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/mongodb-ironbank-0.1.4/mongodb-ironbank-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 8.0.8
     created: "2025-04-22T22:27:41.293274335Z"
     description: A Helm chart for deploying Iron Bank MongoDB
     digest: be912d3c4a6a4f304a4d538465f31e3d6b5ab837f8239652b22c8e2abff4db84
@@ -390,4 +412,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-22T22:27:41.425721234Z"
+generated: "2025-04-22T22:40:46.360439587Z"
