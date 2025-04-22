@@ -10,11 +10,16 @@ image:
   tag: "2.3.0-fips-bc"
   pullPolicy: "IfNotPresent"
 
+
+
+
   ## Optionally specify an imagePullSecret.
   ## Secret must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
   # pullSecret: myRegistrKeySecretName
+imagePullSecrets:
+  - name: ironbank-creds
 
 securityContext:
   runAsUser: 1000
