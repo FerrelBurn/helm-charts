@@ -1,0 +1,6 @@
+apiVersion: v2
+name: grafana-ironbank
+description: A Helm chart for deploying Iron Bank Grafana
+type: application
+version: 0.1.0
+appVersion: "11.6.0"

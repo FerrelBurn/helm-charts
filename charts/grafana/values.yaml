@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: registry1.dso.mil/ironbank/opensource/grafana/grafana
+  tag: "11.6.0"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ironbank-creds
+
+service:
+  type: NodePort
+  port: 3000
+  nodePort: 32000
+
+resources: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClassName: ""
