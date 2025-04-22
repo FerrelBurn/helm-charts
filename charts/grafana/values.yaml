@@ -20,3 +20,22 @@ persistence:
   accessMode: ReadWriteOnce
   size: 10Gi
   storageClassName: ""
+
+
+adminUser: admin
+adminPassword: admin12345
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  hosts:
+    - host: grafana.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - grafana.local
+      secretName: grafana-tls
