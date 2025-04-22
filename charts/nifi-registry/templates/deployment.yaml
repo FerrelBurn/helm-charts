@@ -25,3 +25,10 @@ spec:
           env:
             - name: NIFI_REGISTRY_WEB_HTTP_PORT
               value: "18080"
+                    volumeMounts:
+            - name: flow-storage
+              mountPath: /opt/nifi-registry/nifi-registry-current/flow_storage
+          volumes:
+            - name: flow-storage
+              persistentVolumeClaim:
+                claimName: {{ include "nifi-registry.fullname" . }}

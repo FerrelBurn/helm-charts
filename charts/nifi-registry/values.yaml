@@ -8,9 +8,16 @@ image:
 imagePullSecrets:
   - name: ironbank-creds
 
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 5Gi
+  storageClassName: ""  # Set to "" to use the default storage class
+
 service:
-  type: ClusterIP
+  type: NodePort  # or LoadBalancer if you want a public IP
   port: 18080
+  nodePort: 31880  # choose an available port above 30000
 
 resources: {}
 
