@@ -252,15 +252,10 @@ spec:
 
 {{- /* if .Values.certManager.enabled */}}{{ else }}
 
-          if [ ! -r "${NIFI_HOME}/conf/nifi-cert.pem" ]
-          then
-            /opt/nifi/nifi-toolkit-current/bin/tls-toolkit.sh standalone \
-              -n '{{.Release.Name}}-nifi-0.{{.Release.Name}}-nifi-headless.{{.Release.Namespace}}.svc.cluster.local' \
-              -C '{{.Values.auth.admin}}' \
-              -o "${NIFI_HOME}/conf/" \
-              -P {{.Values.auth.SSL.truststorePasswd}} \
-              -S {{.Values.auth.SSL.keystorePasswd}} \
-              --nifiPropertiesFile /opt/nifi/nifi-current/conf/nifi.properties
+          if [ ! -r "${NIFI_HOME}/conf/nifi-cert.pem" ]; then
+            echo "Skipping TLS toolkit — not present in apache/nifi base image"
+            mkdir -p "${NIFI_HOME}/logs"
+            touch "${NIFI_HOME}/logs/nifi-app.log" "${NIFI_HOME}/logs/nifi-bootstrap.log" "${NIFI_HOME}/logs/nifi-user.log"
           fi
 
 {{- /* if .Values.certManager.enabled */}}{{ end }}
