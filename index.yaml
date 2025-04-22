@@ -3,6 +3,16 @@ entries:
   grafana:
   - apiVersion: v2
     appVersion: 11.6.0
+    created: "2025-04-22T23:49:01.933040326Z"
+    description: A Helm chart for deploying Iron Bank Grafana
+    digest: 81b83f255d81238914c3924b956aa2dccb2e932106d6a9d4af312c70a07d2911
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-0.1.4/grafana-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 11.6.0
     created: "2025-04-22T22:09:29.961328296Z"
     description: A Helm chart for deploying Iron Bank Grafana
     digest: e914b9da4fa62f8e7e54aab8b9ee23062f537aeef9f7d4c775853b22d605b1a0
@@ -22,6 +32,28 @@ entries:
     - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-0.1.1/grafana-0.1.1.tgz
     version: 0.1.1
   mongodb-ironbank:
+  - apiVersion: v2
+    appVersion: 8.0.8
+    created: "2025-04-22T23:49:02.087741226Z"
+    description: A Helm chart for deploying Iron Bank MongoDB
+    digest: c7e424a1987f3145b128ceb11ebb77f30d4057620101f5b39ba0e3fc910a86aa
+    home: https://www.mongodb.com/
+    icon: https://www.svgrepo.com/show/331488/mongodb.svg
+    keywords:
+    - mongodb
+    - ironbank
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: mongodb-ironbank
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/mongodb-ironbank-0.1.5/mongodb-ironbank-0.1.5.tgz
+    version: 0.1.5
   - apiVersion: v2
     appVersion: 8.0.8
     created: "2025-04-22T22:40:46.360400674Z"
@@ -412,4 +444,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-22T22:40:46.360439587Z"
+generated: "2025-04-22T23:49:02.087792692Z"
