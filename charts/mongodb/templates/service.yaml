@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: {{ include "mongodb-ironbank.fullname" . }}
 spec:
-  type: {{ .Values.service.type }}
+  clusterIP: None  # Required for stable DNS
+  selector:
+    app: {{ include "mongodb-ironbank.name" . }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 27017
-      nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
       name: mongodb
-  selector:
-    app: {{ include "mongodb-ironbank.name" . }}
