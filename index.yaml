@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  grafana-ironbank:
+  - apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-04-22T21:59:30.057459533Z"
+    description: A Helm chart for deploying Iron Bank Grafana
+    digest: da7924e700f3991ffc65693d0b90b800afcbd36668769e34b24b99727e553000
+    name: grafana-ironbank
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/grafana-ironbank-0.1.0/grafana-ironbank-0.1.0.tgz
+    version: 0.1.0
+  mongodb-ironbank:
+  - apiVersion: v2
+    appVersion: 8.0.8
+    created: "2025-04-22T21:59:30.150328351Z"
+    description: A Helm chart for deploying Iron Bank MongoDB 8.x
+    digest: 9595003ce0eca41afaf9f28e194539fdb3762fa3e4ce5443d7c65e4c43e74692
+    name: mongodb-ironbank
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/mongodb-ironbank-0.1.0/mongodb-ironbank-0.1.0.tgz
+    version: 0.1.0
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0-custom
@@ -298,4 +320,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-22T21:31:04.376962962Z"
+generated: "2025-04-22T21:59:30.150359269Z"
