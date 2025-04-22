@@ -1,7 +1,7 @@
-{{- define "grafana-ironbank.name" -}}
+{{- define "grafana.name" -}}
 grafana
 {{- end }}
 
-{{- define "grafana-ironbank.fullname" -}}
-{{ include "grafana-ironbank.name" . }}
+{{- define "grafana.fullname" -}}
+{{ include "grafana.name" . }}
 {{- end }}

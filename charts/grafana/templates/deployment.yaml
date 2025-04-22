@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "grafana-ironbank.fullname" . }}
+  name: {{ include "grafana.fullname" . }}
   labels:
-    app: {{ include "grafana-ironbank.name" . }}
+    app: {{ include "grafana.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "grafana-ironbank.name" . }}
+      app: {{ include "grafana.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "grafana-ironbank.name" . }}
+        app: {{ include "grafana.name" . }}
     spec:
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -31,4 +31,4 @@ spec:
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:
-            claimName: {{ include "grafana-ironbank.fullname" . }}
+            claimName: {{ include "grafana.fullname" . }}
