@@ -42,6 +42,9 @@ spec:
 {{ toYaml .Values.sts.hostAliases | indent 8 }}
 {{- end }}
       serviceAccountName: {{ include "apache-nifi.serviceAccountName" . }}
+      imagePullSecrets:
+        - name: {{ .Values.pullSecret }}
+
       {{- if eq .Values.sts.AntiAffinity "hard" }}
       affinity:
         podAntiAffinity:
@@ -57,16 +60,17 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-             - weight: 1
-               podAffinityTerm:
-                 labelSelector:
-                    matchExpressions:
-                      - key: "app"
-                        operator: In
-                        values:
-                         - {{ include "apache-nifi.name" . | quote }}
-                 topologyKey: "kubernetes.io/hostname"
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                      - {{ include "apache-nifi.name" . | quote }}
+                topologyKey: "kubernetes.io/hostname"
       {{- end }}
+
 {{- if and .Values.affinity (and (ne .Values.sts.AntiAffinity "hard") (ne .Values.sts.AntiAffinity "soft")) }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
