@@ -2,6 +2,63 @@ apiVersion: v1
 entries:
   nifi:
   - apiVersion: v2
+    appVersion: 2.0.0-M1
+    created: "2025-04-22T17:09:10.945056926Z"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.7
+    - alias: registry
+      condition: registry.enabled
+      name: nifi-registry
+      repository: https://dysnix.github.io/charts/
+      version: 1.0.0
+    - condition: ca.enabled
+      name: ca
+      repository: ""
+      version: 1.0.1
+    - condition: openldap.enabled
+      name: openldap
+      repository: https://charts.helm.sh/stable
+      version: ~1.2.4
+    description: Apache NiFi is a software project from the Apache Software Foundation
+      designed to automate the flow of data between software systems.
+    digest: 367d5c0d190c7be3ca541b3ed5edcd64f1742e6c7621ee72f58d15686714db0c
+    home: https://nifi.apache.org/
+    icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
+    keywords:
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: sebastien.dupont@cetic.be
+      name: banzo
+      url: https://github.com/banzo
+    - email: amen.ayadi@cetic.be
+      name: AyadiAmen
+      url: https://github.com/AyadiAmen
+    - email: alexandre.nuttinck@cetic.be
+      name: alexnuttinck
+      url: https://github.com/alexnuttinck
+    - email: zakaria.hajja@cetic.be
+      name: zakaria2905
+      url: https://github.com/zakaria2905
+    name: nifi
+    urls:
+    - nifi-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-04-22T17:09:10.829102191Z"
+    description: A Helm chart for Apache NiFi 2.3.0
+    digest: 26c7f04cee51d595e2d500a3b6e4670a5d5b25f9a705a0372653cff27a9609fc
+    name: nifi
+    type: application
+    urls:
+    - nifi-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
     appVersion: 2.3.0
     created: "2025-03-13T00:43:51.001499081Z"
     description: A Helm chart for Apache NiFi 2.3.0
@@ -71,4 +128,4 @@ entries:
     urls:
     - nifi-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-13T00:43:51.001531522Z"
+generated: "2025-04-22T17:09:10.94510168Z"
