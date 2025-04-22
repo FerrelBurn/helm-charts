@@ -6,8 +6,8 @@ replicaCount: 1
 ## ref: https://hub.docker.com/r/apache/nifi/
 ##
 image:
-  repository: apache/nifi
-  tag: "2.3.0"
+  repository: registry1.dso.mil/ironbank/opensource/apache/nifi
+  tag: "2.3.0-fips-bc"
   pullPolicy: "IfNotPresent"
 
   ## Optionally specify an imagePullSecret.
