@@ -33,3 +33,6 @@ tls:
   keystorePasswordKey: keystorePassword
   keystoreType: PKCS12
   httpsPort: 18443  # Internal container port exposed via service
+  truststoreFilename: truststore.jks
+  truststoreType: JKS
+  truststorePasswordKey: truststorePassword

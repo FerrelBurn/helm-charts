@@ -25,30 +25,29 @@ spec:
           ports:
             - containerPort: {{ .Values.tls.httpsPort }}
               name: https
-          command:
-            - sh
-            - -c
-            - |
-              echo "nifi.registry.web.https.port={{ .Values.tls.httpsPort }}" >> /opt/nifi-registry/nifi-registry-current/conf/nifi-registry.properties && \
-              exec /opt/nifi-registry/nifi-registry-current/bin/nifi-registry.sh run
           env:
             - name: AUTH
               value: "tls"
-            - name: NIFI_REGISTRY_WEB_HTTP_PORT
-              value: "0"
-            - name: NIFI_REGISTRY_WEB_HTTPS_PORT
-              value: "{{ .Values.tls.httpsPort }}"
-            - name: NIFI_REGISTRY_WEB_HTTPS_HOST
-              value: "0.0.0.0"
-            - name: NIFI_REGISTRY_SECURITY_KEYSTORE
+            - name: KEYSTORE_PATH
               value: "/opt/nifi-registry/keystore/{{ .Values.tls.keystoreFilename }}"
-            - name: NIFI_REGISTRY_SECURITY_KEYSTORE_TYPE
+            - name: KEYSTORE_TYPE
               value: "{{ .Values.tls.keystoreType }}"
-            - name: NIFI_REGISTRY_SECURITY_KEYSTORE_PASSWD
+            - name: KEYSTORE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.tls.secretName }}
                   key: {{ .Values.tls.keystorePasswordKey }}
+            - name: TRUSTSTORE_PATH
+              value: "/opt/nifi-registry/keystore/{{ .Values.tls.truststoreFilename }}"
+            - name: TRUSTSTORE_TYPE
+              value: "{{ .Values.tls.truststoreType }}"
+            - name: TRUSTSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.tls.secretName }}
+                  key: {{ .Values.tls.truststorePasswordKey }}
+            - name: INITIAL_ADMIN_IDENTITY
+              value: "CN=admin, OU=nifi"
           volumeMounts:
             - name: flow-storage
               mountPath: /opt/nifi-registry/nifi-registry-current/flow_storage
