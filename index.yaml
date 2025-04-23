@@ -486,6 +486,16 @@ entries:
   nifi-registry:
   - apiVersion: v2
     appVersion: 2.3.0
+    created: "2025-04-23T02:48:14.709221402Z"
+    description: A Helm chart for Iron Bank Apache NiFi Registry
+    digest: 340987112f3ba175793968ed0be4ce3f38f9a0d3109b9ce983f802913762ae39
+    name: nifi-registry
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.19/nifi-registry-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
+    appVersion: 2.3.0
     created: "2025-04-23T02:39:48.62059868Z"
     description: A Helm chart for Iron Bank Apache NiFi Registry
     digest: 238547033adb6ac49489a28018a4ccd932af2502acba0e4f1bbe09b240d47dd7
@@ -534,4 +544,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-23T02:39:48.620665926Z"
+generated: "2025-04-23T02:48:14.709269652Z"
