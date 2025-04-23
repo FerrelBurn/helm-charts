@@ -32,6 +32,8 @@ spec:
               echo "nifi.registry.web.https.port={{ .Values.tls.httpsPort }}" >> /opt/nifi-registry/nifi-registry-current/conf/nifi-registry.properties && \
               exec /opt/nifi-registry/nifi-registry-current/bin/nifi-registry.sh run
           env:
+            - name: AUTH
+              value: "tls"
             - name: NIFI_REGISTRY_WEB_HTTP_PORT
               value: "0"
             - name: NIFI_REGISTRY_WEB_HTTPS_PORT
