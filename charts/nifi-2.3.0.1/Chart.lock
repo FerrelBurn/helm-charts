@@ -4,7 +4,7 @@ dependencies:
   version: 9.2.7
 - name: nifi-registry
   repository: https://helm.zapatatechnology.com/
-  version: 0.1.4
+  version: 0.1.16
 - name: ca
   repository: ""
   version: 1.0.1

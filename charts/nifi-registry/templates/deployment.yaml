@@ -30,6 +30,8 @@ spec:
               value: "0"
             - name: NIFI_REGISTRY_WEB_HTTPS_PORT
               value: "{{ .Values.tls.httpsPort }}"
+            - name: NIFI_REGISTRY_WEB_HTTPS_HOST
+              value: "0.0.0.0"
             - name: NIFI_REGISTRY_SECURITY_KEYSTORE
               value: "/opt/nifi-registry/keystore/{{ .Values.tls.keystoreFilename }}"
             - name: NIFI_REGISTRY_SECURITY_KEYSTORE_TYPE

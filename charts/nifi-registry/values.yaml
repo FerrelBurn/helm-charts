@@ -12,12 +12,11 @@ persistence:
   enabled: true
   accessMode: ReadWriteOnce
   size: 5Gi
-  storageClassName: ""  # Set to "" to use the default storage class
+  storageClassName: ""  # Use default storage class
 
 service:
-  type: NodePort  # or LoadBalancer if you want a public IP
-  port: 18080
-  nodePort: 31880  # choose an available port above 30000
+  type: NodePort
+  nodePort: 31880  # Public-facing port used for HTTPS (maps to container port 18443)
 
 resources: {}
 
@@ -33,4 +32,4 @@ tls:
   keystoreFilename: keystore.p12
   keystorePasswordKey: keystorePassword
   keystoreType: PKCS12
-  httpsPort: 18443
+  httpsPort: 18443  # Internal container port exposed via service

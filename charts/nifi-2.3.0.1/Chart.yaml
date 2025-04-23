@@ -1,17 +1,15 @@
 ---
 apiVersion: v2
 name: nifi
-version: 0.6.15
+version: 0.6.16
 appVersion: 2.3.0-custom
-description: Apache NiFi is a software project from the Apache Software Foundation designed to automate the flow of data between software systems.
+description: Apache NiFi From Zapata Technology IRONBANK
 keywords:
   - nifi
   - data
   - process
 home: https://nifi.apache.org/
 icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
-source:
-  - https://helm.zapatatechnology.com/
 maintainers:
   - name: Drew
     email: drew@zapatatechnology.com
@@ -24,7 +22,7 @@ dependencies:
     condition: zookeeper.enabled
   - name: nifi-registry
     alias: registry
-    version: 0.1.4
+    version: 0.1.15
     repository: https://helm.zapatatechnology.com/
     condition: registry.enabled
   - name: ca
