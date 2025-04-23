@@ -56,13 +56,13 @@ properties:
   provenanceMaxStorageTime: "10 days"
   siteToSite:
     port: 10000
-    
+
   safetyValve:
     nifi.web.http.network.interface.default: eth0
     nifi.web.http.network.interface.lo: lo
-    nifi.security.truststore: /opt/nifi/nifi-current/conf/security/truststore.jks
-    nifi.security.truststoreType: JKS
-    nifi.security.truststorePasswd: changeit
+#    nifi.security.truststore: /opt/nifi/nifi-current/conf/security/truststore.jks
+#    nifi.security.truststoreType: JKS
+#    nifi.security.truststorePasswd: changeit
 
 # -------------------------------------------------------------------
 # Authentication
@@ -196,15 +196,15 @@ affinity: {}
 nodeSelector: {}
 tolerations: []
 initContainers: {}
-extraVolumeMounts:
-  - name: nifi-tls
-    mountPath: /opt/nifi/nifi-current/conf/security
-    readOnly: true
+extraVolumeMounts: []
+#  - name: nifi-tls
+#    mountPath: /opt/nifi/nifi-current/conf/security
+#    readOnly: true
 
-extraVolumes:
-  - name: nifi-tls
-    secret:
-      secretName: nifi-cert-bundle
+extraVolumes: []
+#  - name: nifi-tls
+#    secret:
+#      secretName: nifi-cert-bundle
 extraContainers: []
 terminationGracePeriodSeconds: 30
 env: []
@@ -263,7 +263,7 @@ zookeeper:
 
 registry:
   enabled: true
-  url: "https://192.168.67.2:31880"
+  url: "https://nifi-registry.local:31880/"
   port: 31880
   
 metrics:
