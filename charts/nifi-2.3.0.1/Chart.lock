@@ -1,0 +1,15 @@
+dependencies:
+- name: zookeeper
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.2.7
+- name: nifi-registry
+  repository: https://helm.zapatatechnology.com/
+  version: 0.1.4
+- name: ca
+  repository: ""
+  version: 1.0.1
+- name: openldap
+  repository: https://charts.helm.sh/stable
+  version: 1.2.7
+digest: sha256:3fee3fe2836880e37059190f7fc51b02640ede7413040ce9897fa3bdf2ae2218
+generated: "2025-04-22T17:19:33.622457249-07:00"

@@ -3,6 +3,6 @@
 
 # Helm Charts dependencies
 /charts/*.tgz
-*.lock
+
 
 .idea
