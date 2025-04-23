@@ -111,6 +111,38 @@ entries:
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0-custom
+    created: "2025-04-23T02:39:48.518566862Z"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.7
+    - condition: ca.enabled
+      name: ca
+      repository: ""
+      version: 1.0.1
+    - condition: openldap.enabled
+      name: openldap
+      repository: https://charts.helm.sh/stable
+      version: ~1.2.4
+    description: Apache NiFi From Zapata Technology IRONBANK
+    digest: 25b93cc9849b5398b2cb4a9891c7862152d649e1f0f0272d5344231bd89b3d89
+    home: https://nifi.apache.org/
+    icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
+    keywords:
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: nifi
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-0.6.18/nifi-0.6.18.tgz
+    version: 0.6.18
+  - apiVersion: v2
+    appVersion: 2.3.0-custom
     created: "2025-04-23T01:36:11.212290292Z"
     dependencies:
     - condition: zookeeper.enabled
@@ -454,6 +486,16 @@ entries:
   nifi-registry:
   - apiVersion: v2
     appVersion: 2.3.0
+    created: "2025-04-23T02:39:48.62059868Z"
+    description: A Helm chart for Iron Bank Apache NiFi Registry
+    digest: 238547033adb6ac49489a28018a4ccd932af2502acba0e4f1bbe09b240d47dd7
+    name: nifi-registry
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.18/nifi-registry-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v2
+    appVersion: 2.3.0
     created: "2025-04-23T01:36:11.325996428Z"
     description: A Helm chart for Iron Bank Apache NiFi Registry
     digest: b912f1c46caa7b141fa6381ad22a7b96112b3fd995897e730e6a066f93be5063
@@ -492,4 +534,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-23T01:36:11.326076959Z"
+generated: "2025-04-23T02:39:48.620665926Z"
