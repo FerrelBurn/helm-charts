@@ -251,10 +251,10 @@ zookeeper:
   replicaCount: 3
 
 registry:
-  enabled: false
-  url: ""
-  port: 80
-
+  enabled: true
+  url: "https://192.168.67.2:31880"
+  port: 31880
+  
 metrics:
   prometheus:
     enabled: false

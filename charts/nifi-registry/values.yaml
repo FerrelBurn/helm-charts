@@ -26,3 +26,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+tls:
+  enabled: true
+  secretName: nifi-registry-tls
+  keystoreFilename: keystore.p12
+  keystorePasswordKey: keystorePassword
+  keystoreType: PKCS12
+  httpsPort: 18443

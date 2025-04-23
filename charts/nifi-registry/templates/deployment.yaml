@@ -23,15 +23,32 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 18080
-              name: http
+            - containerPort: {{ .Values.tls.httpsPort }}
+              name: https
           env:
             - name: NIFI_REGISTRY_WEB_HTTP_PORT
-              value: "18080"
+              value: "0"
+            - name: NIFI_REGISTRY_WEB_HTTPS_PORT
+              value: "{{ .Values.tls.httpsPort }}"
+            - name: NIFI_REGISTRY_SECURITY_KEYSTORE
+              value: "/opt/nifi-registry/keystore/{{ .Values.tls.keystoreFilename }}"
+            - name: NIFI_REGISTRY_SECURITY_KEYSTORE_TYPE
+              value: "{{ .Values.tls.keystoreType }}"
+            - name: NIFI_REGISTRY_SECURITY_KEYSTORE_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.tls.secretName }}
+                  key: {{ .Values.tls.keystorePasswordKey }}
           volumeMounts:
             - name: flow-storage
               mountPath: /opt/nifi-registry/nifi-registry-current/flow_storage
+            - name: tls-keystore
+              mountPath: /opt/nifi-registry/keystore
+              readOnly: true
       volumes:
         - name: flow-storage
           persistentVolumeClaim:
             claimName: {{ include "nifi-registry.fullname" . }}
+        - name: tls-keystore
+          secret:
+            secretName: {{ .Values.tls.secretName }}

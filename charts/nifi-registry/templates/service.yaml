@@ -5,10 +5,10 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 18080
+    - port: {{ .Values.tls.httpsPort }}
+      targetPort: {{ .Values.tls.httpsPort }}
       protocol: TCP
-      name: http
+      name: https
       {{- if eq .Values.service.type "NodePort" }}
       nodePort: {{ .Values.service.nodePort }}
       {{- end }}
