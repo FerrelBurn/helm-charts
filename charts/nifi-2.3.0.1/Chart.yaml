@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: nifi
-version: 0.6.19
+version: 0.6.20
 appVersion: 2.3.0-custom
 description: Apache NiFi From Zapata Technology IRONBANK
 keywords:

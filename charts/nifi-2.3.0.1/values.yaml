@@ -56,6 +56,7 @@ properties:
   provenanceMaxStorageTime: "10 days"
   siteToSite:
     port: 10000
+    
   safetyValve:
     nifi.web.http.network.interface.default: eth0
     nifi.web.http.network.interface.lo: lo
