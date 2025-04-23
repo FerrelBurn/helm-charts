@@ -48,6 +48,8 @@ spec:
                   key: {{ .Values.tls.truststorePasswordKey }}
             - name: INITIAL_ADMIN_IDENTITY
               value: "CN=admin, OU=nifi"
+            - name: NEED_CLIENT_AUTH
+              value: "false"
           volumeMounts:
             - name: flow-storage
               mountPath: /opt/nifi-registry/nifi-registry-current/flow_storage
