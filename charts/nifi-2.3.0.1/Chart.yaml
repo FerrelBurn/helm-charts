@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: nifi
-version: 0.6.16
+version: 0.6.18
 appVersion: 2.3.0-custom
 description: Apache NiFi From Zapata Technology IRONBANK
 keywords:
@@ -20,11 +20,6 @@ dependencies:
     version: 9.2.7
     repository: https://charts.bitnami.com/bitnami
     condition: zookeeper.enabled
-  - name: nifi-registry
-    alias: registry
-    version: 0.1.15
-    repository: https://helm.zapatatechnology.com/
-    condition: registry.enabled
   - name: ca
     version: 1.0.1
     condition: ca.enabled
