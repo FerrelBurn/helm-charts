@@ -59,6 +59,9 @@ properties:
   safetyValve:
     nifi.web.http.network.interface.default: eth0
     nifi.web.http.network.interface.lo: lo
+    nifi.security.truststore: /opt/nifi/nifi-current/conf/security/truststore.jks
+    nifi.security.truststoreType: JKS
+    nifi.security.truststorePasswd: changeit
 
 # -------------------------------------------------------------------
 # Authentication
@@ -192,8 +195,15 @@ affinity: {}
 nodeSelector: {}
 tolerations: []
 initContainers: {}
-extraVolumeMounts: []
-extraVolumes: []
+extraVolumeMounts:
+  - name: nifi-tls
+    mountPath: /opt/nifi/nifi-current/conf/security
+    readOnly: true
+
+extraVolumes:
+  - name: nifi-tls
+    secret:
+      secretName: nifi-cert-bundle
 extraContainers: []
 terminationGracePeriodSeconds: 30
 env: []
