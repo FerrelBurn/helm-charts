@@ -111,6 +111,44 @@ entries:
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0-custom
+    created: "2025-04-23T01:36:11.212290292Z"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.7
+    - alias: registry
+      condition: registry.enabled
+      name: nifi-registry
+      repository: https://helm.zapatatechnology.com/
+      version: 0.1.4
+    - condition: ca.enabled
+      name: ca
+      repository: ""
+      version: 1.0.1
+    - condition: openldap.enabled
+      name: openldap
+      repository: https://charts.helm.sh/stable
+      version: ~1.2.4
+    description: Apache NiFi is a software project from the Apache Software Foundation
+      designed to automate the flow of data between software systems.
+    digest: e48bcfb71e848c3bafe695b7f9db3eff67942b5f4462d3e429f6b8b4d97b5f2e
+    home: https://nifi.apache.org/
+    icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
+    keywords:
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: nifi
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-0.6.15/nifi-0.6.15.tgz
+    version: 0.6.15
+  - apiVersion: v2
+    appVersion: 2.3.0-custom
     created: "2025-04-22T22:27:41.425663957Z"
     dependencies:
     - condition: zookeeper.enabled
@@ -416,6 +454,16 @@ entries:
   nifi-registry:
   - apiVersion: v2
     appVersion: 2.3.0
+    created: "2025-04-23T01:36:11.325996428Z"
+    description: A Helm chart for Iron Bank Apache NiFi Registry
+    digest: b912f1c46caa7b141fa6381ad22a7b96112b3fd995897e730e6a066f93be5063
+    name: nifi-registry
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.15/nifi-registry-0.1.15.tgz
+    version: 0.1.15
+  - apiVersion: v2
+    appVersion: 2.3.0
     created: "2025-04-22T21:31:04.376934609Z"
     description: A Helm chart for Iron Bank Apache NiFi Registry
     digest: 7f73e7825e6d577c0ecd2e9980484f8eb84216d249f9b604f0e65dfea7b8c338
@@ -444,4 +492,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-22T23:49:02.087792692Z"
+generated: "2025-04-23T01:36:11.326076959Z"
