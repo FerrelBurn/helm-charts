@@ -111,6 +111,38 @@ entries:
   nifi:
   - apiVersion: v2
     appVersion: 2.3.0-custom
+    created: "2025-05-01T19:02:53.391704576Z"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.7
+    - condition: ca.enabled
+      name: ca
+      repository: ""
+      version: 1.0.1
+    - condition: openldap.enabled
+      name: openldap
+      repository: https://charts.helm.sh/stable
+      version: ~1.2.4
+    description: Apache NiFi From Zapata Technology IRONBANK
+    digest: 026d74b796a289ddd21d8c7684c9bb037531e186cf378caf68a105f34b1c9efd
+    home: https://nifi.apache.org/
+    icon: https://svn.apache.org/repos/asf/nifi/site/trunk/images/niFi-logo-horizontal-scaled.png
+    keywords:
+    - nifi
+    - data
+    - process
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: nifi
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-0.6.23/nifi-0.6.23.tgz
+    version: 0.6.23
+  - apiVersion: v2
+    appVersion: 2.3.0-custom
     created: "2025-04-23T04:53:17.487182207Z"
     dependencies:
     - condition: zookeeper.enabled
@@ -680,4 +712,4 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-04-23T04:53:17.487280701Z"
+generated: "2025-05-01T19:02:53.391833107Z"
