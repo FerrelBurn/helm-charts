@@ -11,8 +11,9 @@ image:
 pullSecret: ironbank-creds
 
 securityContext:
-  runAsUser: 1000
-  fsGroup: 1000
+  runAsNonRoot
+#  runAsUser: 1000
+#  fsGroup: 1000
 
 # -------------------------------------------------------------------
 # StatefulSet Configuration
