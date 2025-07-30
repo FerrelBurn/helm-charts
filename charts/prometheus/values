@@ -1,0 +1,37 @@
+replicaCount: 1
+
+image:
+  repository: cgr.dev/zapatatechnology.com/prometheus-fips
+  tag: "2.50.1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ironbank-creds
+
+service:
+  type: NodePort
+  port: 9090
+  nodePort: 30900
+
+resources: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClassName: ""
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  hosts:
+    - host: prometheus.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - prometheus.local
+      secretName: prometheus-tls
