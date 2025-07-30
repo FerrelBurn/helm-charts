@@ -744,4 +744,19 @@ entries:
     urls:
     - https://github.com/FerrelBurn/helm-charts/releases/download/nifi-registry-0.1.2/nifi-registry-0.1.2.tgz
     version: 0.1.2
-generated: "2025-05-01T19:11:25.129627083Z"
+  prometheus:
+  - apiVersion: v2
+    appVersion: 2.50.1
+    created: "2025-07-30T14:13:53.575417005Z"
+    description: A Helm chart for deploying FIPS-enabled Prometheus from Zapata
+    digest: 7c04a24ed2bed828c1b3a6410f569837797bd7788c18d0e689d9e9a363adb3c8
+    maintainers:
+    - email: drew@zapatatechnology.com
+      name: Drew
+      url: https://github.com/ferrelburn
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/FerrelBurn/helm-charts/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-30T14:13:53.575515901Z"
