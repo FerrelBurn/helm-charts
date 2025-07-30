@@ -1,0 +1,10 @@
+apiVersion: v2
+name: prometheus
+description: A Helm chart for deploying FIPS-enabled Prometheus from Zapata
+type: application
+version: 0.1.0
+appVersion: "2.50.1"
+maintainers:
+  - name: Drew
+    email: drew@zapatatechnology.com
+    url: https://github.com/ferrelburn
